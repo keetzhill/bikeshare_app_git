@@ -1,3 +1,4 @@
+# Adding note to bikeshare file for git exercise.
 import time
 import pandas as pd
 import numpy as np
@@ -5,6 +6,7 @@ import numpy as np
 CITY_DATA = {'chicago': 'chicago.csv',
              'new york city': 'new_york_city.csv',
              'washington': 'washington.csv'}
+
 
 def get_filters():
     """
@@ -20,15 +22,18 @@ def get_filters():
 
     # Get user input for city (chicago, new york city, washington)
     while True:
-        city = input("Select from the following cities: Chicago, New York City, or Washington: ").lower()
+        city = input(
+            "Select from the following cities: Chicago, New York City, or Washington: ").lower()
         if city in CITY_DATA:
             break
         else:
-            print("DATA NOT AVAILABLE! Select from the following: Chicago, New York City, Washington:")
-    
+            print(
+                "DATA NOT AVAILABLE! Select from the following: Chicago, New York City, Washington:")
+
     # Ask if the user wants to see the first five rows of data
     while True:
-        raw_data = input("Would you like to see the first five rows of raw data? Enter yes or no: ").lower()
+        raw_data = input(
+            "Would you like to see the first five rows of raw data? Enter yes or no: ").lower()
         if raw_data in ['yes', 'no']:
             break
         else:
@@ -36,15 +41,17 @@ def get_filters():
 
     # Get user input for month (all, january, february, ..., june)
     while True:
-        month = input("Enter the month to display: January, February, March, April, May, June, or All: ").lower()
+        month = input(
+            "Enter the month to display: January, February, March, April, May, June, or All: ").lower()
         if month in ['january', 'february', 'march', 'april', 'may', 'june', 'all']:
             break
         else:
             print("DATA NOT AVAILABLE! Select from the following: January, February, March, April, May, June, or All:")
-              
+
     # Get user input for day of week (all, monday, tuesday, ..., sunday)
     while True:
-        day = input("Enter the day of the week to display: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, or All: ").lower()
+        day = input(
+            "Enter the day of the week to display: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, or All: ").lower()
         if day in ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday', 'all']:
             break
         else:
@@ -154,28 +161,29 @@ def user_stats(df):
 
     # Display counts of user types
     user_types = df['User Type'].value_counts()
-    print('Counts of user types:\n', user_types)        
+    print('Counts of user types:\n', user_types)
 
     # Display counts of gender
     if 'Gender' in df.columns:
         gender_counts = df['Gender'].value_counts()
         print('\nCounts of gender:\n', gender_counts)
-    else: 
+    else:
         print('Gender data not available for this city.')
 
     # Display earliest, most recent, and most common year of birth
-    if 'Birth Year' in df.columns: 
+    if 'Birth Year' in df.columns:
         earliest_year = df['Birth Year'].min()
-        most_recent_year = df['Birth Year'].max() 
-        most_common_year = df['Birth Year'].mode()[0] 
-        print('\nEarliest year of birth:', earliest_year) 
-        print('Most recent year of birth:', most_recent_year) 
-        print('Most common year of birth:', most_common_year) 
-    else: 
-        print('Birth year data not available for this city.') 
-        
+        most_recent_year = df['Birth Year'].max()
+        most_common_year = df['Birth Year'].mode()[0]
+        print('\nEarliest year of birth:', earliest_year)
+        print('Most recent year of birth:', most_recent_year)
+        print('Most common year of birth:', most_common_year)
+    else:
+        print('Birth year data not available for this city.')
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-' * 40)
+
 
 def descriptive_stats(df):
     """
@@ -185,12 +193,11 @@ def descriptive_stats(df):
         df - Pandas DataFrame containing city data
     """
     print("\nGenerating Descriptive Statistics...\n")
-    
+
     # Display descriptive statistics
     print(df.describe())
-    
-    print("\nDescriptive statistics generated.\n")
 
+    print("\nDescriptive statistics generated.\n")
 
 
 def display_data(df):
@@ -198,13 +205,14 @@ def display_data(df):
     Prompt the user if they want to see the first five rows of data and display it.
     Continue iterating, showing the next five rows at each prompt.
     Stop the program when the user says no or when there is no more data to display.
-    
+
     Args:
         df - Pandas DataFrame containing city data
     """
     start_loc = 0
     while True:
-        view_data = input("Would you like to see the next five rows of data? Enter yes or no: ").lower()
+        view_data = input(
+            "Would you like to see the next five rows of data? Enter yes or no: ").lower()
         if view_data == 'yes':
             print(df.iloc[start_loc:start_loc + 5])
             start_loc += 5
@@ -217,6 +225,8 @@ def display_data(df):
             print("Invalid input! Please enter 'yes' or 'no'.")
 
 # Define the main function with the call to display_data added
+
+
 def main():
     while True:
         city, month, day, raw_data = get_filters()
@@ -235,6 +245,7 @@ def main():
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
+
 
 if __name__ == "__main__":
     main()
