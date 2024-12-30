@@ -2,7 +2,7 @@ import time
 import pandas as pd
 import numpy as np
 
-# Updated for readability on 30 Dec 2024
+# Updated for readability on 30 Dec 2024 for git exercise.
 
 CITY_DATA = {
     'chicago': 'chicago.csv',
