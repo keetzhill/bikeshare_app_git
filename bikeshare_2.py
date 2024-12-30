@@ -1,3 +1,4 @@
+# Adding note to bikeshare file for git exercise.
 import time
 import pandas as pd
 import numpy as np
@@ -23,6 +24,7 @@ def get_user_input(prompt, valid_options):
         else:
             print(f"Invalid input! Please choose from the following options: {
                   ', '.join(valid_options)}")
+
 
 
 def get_filters():
